@@ -1,8 +1,8 @@
-# CarPark
+# AutoCarPark
 
-CarPark is a software model of an automatic parking garage. It simulates a garage in which a driver drops off a car and an automated garage mechanism finds and avaible parking spot and automatically moves the car into the appropriate spot. The garage would then find the car and route it back to the exit when the driver is ready to pick it up. 
+AutoCarPark is a software model of an automatic parking garage. It simulates a garage in which a driver drops off a car and an automated garage mechanism finds and avaible parking spot and automatically moves the car into the appropriate spot. The garage would then find the car and route it back to the exit when the driver is ready to pick it up. 
 
-#### The interactive app can be found at: 
+#### The interactive app can be found at: https://autocarpark.herokuapp.com/
 
 #### The garage mechanism is primarily handled by:
 - app/garage.py
