@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<section class="leftcol">
+    <!-- prints message when parking or picking up a car -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <h4>{{ message }}</h4>
+    {% endfor %}
+    <br>
+    {% endif %}
+    {% endwith %}
+    <!-- form to park or pickup a car -->
+    <h3>Park Or Pickup?</h3>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=32) }}<br>
+            {% for error in form.name.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.license_plate.label }}<br>
+            {{ form.license_plate(size=32) }}<br>
+            {% for error in form.license_plate.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit_park() }} {{ form.submit_pickup() }}</p>
+    </form>
+    <a href="{{ url_for('index') }}">Clear Form</a>
+    <br>
+    <!-- table index or all parking spots in the garage (occupied and empty) -->
+    <h3>Garage Map</h3>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Spot</th>
+                <th scope="col">Name</th>
+                <th scope="col">License Plate</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for spot in spot_index %}
+            {% if spot.occupied %}
+            <tr>
+                <td>{{ spot.id }}</td>
+                <td>{{ spot.car.name }}</td>
+                <td>{{ spot.car.license_plate }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td>{{ spot.id }}</td>
+                <td>-</td>
+                <td>-</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+<!-- animated parking garage map -->
+<section class="map">
+    <!-- sets car images for cars alreading or still in the garage -->
+    {% for spot in occupied_spots %}
+    <div id="{{ spot.id }}">
+        <img src="{{ url_for('static', filename='images/delorean.png') }}">
+    </div>
+    {% endfor %}
+    <!-- animate if car is being parked or picked up -->
+    {% if json_path|safe != 'null' %} <!-- path is json format, None is converted to 'null' -->
+    <!-- create car or animation -->
+    <div class="delorean" {% if car_found %}id="{{ car_found }}"{% endif %}>
+        <img src="{{ url_for('static', filename='images/delorean.png') }}">
+    </div>
+    <!-- cdn for anime.js -->
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+    <!-- animation script -->
+    <script>   
+        const duration = 1200;
+        const positions = {{ json_path|safe }}
+        anime({
+            targets: 'div.delorean',
+            easing: 'easeInOutSine',
+            translateX: positions.map(p => ({value: p.x, duration})),
+            translateY: positions.map(p => ({value: p.y, duration})),
+        });
+    </script>
+    {% endif %}
+</section>
+{% endblock %}
+

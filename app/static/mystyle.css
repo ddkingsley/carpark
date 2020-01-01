@@ -1,0 +1,79 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+nav {
+    padding-top: 30px;
+    font-size: 20px;
+}
+.leftcol {
+    float: left;
+    width: 25%;
+}
+th,td {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 5px;
+    padding-right: 10px;
+}
+.map {
+    position: relative;
+    background-image: url("./images/garagemap.png");
+    height: 800px;
+    width: 800px;
+    float: right;
+}
+.delorean {
+    position: absolute;
+    top: 50px;
+}
+#P0 {
+    position: absolute;
+    top: 181px;
+    left: 7px;
+}
+#P1 {
+    position: absolute;
+    top: 181px;
+    left: 558px;
+}
+#P2 {
+    position: absolute;
+    top: 301px;
+    left: 7px;
+}
+#P3 {
+    position: absolute;
+    top: 301px;
+    left: 558px;
+}
+#P4 {
+    position: absolute;
+    top: 421px;
+    left: 7px;
+}
+#P5 {
+    position: absolute;
+    top: 421px;
+    left: 558px;
+}
+#P6 {
+    position: absolute;
+    top: 541px;
+    left: 7px;
+}
+#P7 {
+    position: absolute;
+    top: 541px;
+    left: 558px;
+}
+#P8 {
+    position: absolute;
+    top: 661px;
+    left: 7px;
+}
+#P9 {
+    position: absolute;
+    top: 661px;
+    left: 558px;
+}
