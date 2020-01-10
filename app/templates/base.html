@@ -1,7 +1,11 @@
 {% extends 'bootstrap/base.html' %}
 
 {% block title %}
-    AutoCarPark
+    {% if title %}
+    <title>{{ title }} - AutoCarPark</title>
+    {% else %}
+    <title>AutoCarPark</title>
+    {% endif %}
 {% endblock %}
 
 {% block styles %}
@@ -12,8 +16,14 @@
 {% block content %}
     <div class="container">
         <header>
+            {% if heading %}
+            <h1>{{ heading }}</h1>
+            {% else %}
             <h1>Welcome to AutoCarPark!</h1>
+            {% endif %}
             <nav>
+                <a href="{{ url_for('index') }}">Home</a> |
+                <a href="{{ url_for('about') }}">About</a> |
                 <a href="https://github.com/ddkingsley/carpark" target="_blank">Checkout Code on GitHub</a>
             </nav>
         </header>

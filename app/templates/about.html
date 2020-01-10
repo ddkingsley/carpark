@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<section class="aboutleft">
+    <h3>A Model</h3>
+    <p>
+    AutoCarPark is a software model of an automatic parking garage. It simulates a garage in which a driver drops off a car and an automated garage mechanism finds an available parking spot and automatically routes the car into the selected spot. The garage would then find the car and route it back to the exit when the driver is ready to pick it up.
+    </p>
+    <p>
+    AutoCarPark is a model I built as a solution to an interview question I received regarding the potential requirements for an automated parking garage. Its purpose is to provide an interactive and illustrative code solution example. The code can be viewed by clicking <a href="https://github.com/ddkingsley/carpark" target="_blank">Checkout Code on GitHub</a>.
+    </p>
+    <p>Created by: Daniel Kingsley</p>
+</section>
+<section class="aboutright">
+    <img src="{{ url_for('static', filename='images/car_about.jpg') }}" id="car_about" alt="delorean in a garage">
+</section>
+{% endblock %}

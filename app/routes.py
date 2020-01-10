@@ -40,3 +40,7 @@ def index():
             else: flash("Your car was not found. It must have been stolen!!!")      
     return render_template('index.html', form=form, spot_index=garage.spot_index, 
         occupied_spots=occupied_spots, json_path=json.dumps(path), car_found=car_found)
+
+@app.route('/about')
+def about():
+    return render_template('about.html', heading='About AutoCarPark')

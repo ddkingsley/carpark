@@ -22,7 +22,7 @@ for i in range(10):
 garage = Garage(spot_index)
 
 #fill garage with a few example cars
-cars = [['Dwight', '1234AEI'], ['Michael', '5678OU'], ['Jim', '9876ABC'], ['Pam', '5432DEF']]
+cars = [['Marty', '1234AEI'], ['Doc', '5678OU'], ['Biff', '9876ABC'], ['Lorraine', '5432DEF']]
 for c in cars:
     car = Car(c[0], c[1])
     garage.park_car(car)
